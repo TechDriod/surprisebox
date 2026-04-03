@@ -238,6 +238,10 @@ button { font-family: inherit; }
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.07);
   transition: transform var(--transition), box-shadow var(--transition);
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 .occ-card:hover {
   transform: translateY(-5px);
