@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bon Voyage, Arjun! ✈️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #050c1a;
+      --card: #0d1a2e;
+      --blue: #3b82f6;
+      --blue2: #60a5fa;
+      --sky: #bae6fd;
+      --text: #eff6ff;
+      --muted: #93c5fd;
+      --border: rgba(59, 130, 246, 0.22);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    /* Flying plane */
+    .plane-track {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+      z-index: 10;
+      overflow: hidden;
+      height: 50px;
+    }
+    .plane {
+      position: absolute;
+      font-size: 2rem;
+      animation: flyAcross 14s linear infinite;
+      left: -60px;
+      top: 0;
+    }
+    .trail {
+      position: absolute;
+      top: 14px;
+      left: -200px;
+      width: 200px;
+      height: 4px;
+      background: linear-gradient(to left, rgba(96,165,250,0.4), transparent);
+      animation: flyAcross 14s linear infinite;
+    }
+    @keyframes flyAcross {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(calc(100vw + 120px)); }
+    }
+    /* Stars */
+    .stars-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle ease-in-out infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.15; }
+      50%       { opacity: 0.9; }
+    }
+    /* Hero */
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 120px 24px 60px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.15) 0%, transparent 70%);
+    }
+    .hero-plane-big { font-size: 4rem; margin-bottom: 16px; animation: bobble 2.5s ease-in-out infinite; }
+    @keyframes bobble {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50%       { transform: translateY(-10px) rotate(5deg); }
+    }
+    .hero .badge {
+      display: inline-block;
+      background: rgba(59,130,246,0.12);
+      border: 1px solid var(--border);
+      color: var(--blue2);
+      padding: 6px 20px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1.2;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, var(--blue2), var(--sky));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p { color: var(--muted); font-size: 1.1rem; max-width: 540px; margin: 0 auto; }
+    /* Route card */
+    .route-section {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto 60px;
+      padding: 0 24px;
+    }
+    .route-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .route-city { flex: 1; min-width: 120px; }
+    .route-city .city-code {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--blue2);
+    }
+    .route-city .city-name { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+    .route-divider { color: var(--blue2); font-size: 1.8rem; flex-shrink: 0; }
+    .route-plane { font-size: 2.5rem; flex-shrink: 0; }
+    /* Section */
+    .section {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto 64px;
+      padding: 0 24px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--blue2);
+      text-align: center;
+      margin-bottom: 34px;
+    }
+    /* Memories before departure */
+    .memories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .memory-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 18px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .memory-card:hover { transform: translateY(-5px); border-color: var(--blue); }
+    .mem-emoji { font-size: 2rem; margin-bottom: 10px; }
+    .memory-card h3 { font-size: 0.95rem; font-weight: 500; color: var(--sky); margin-bottom: 6px; }
+    .memory-card p  { font-size: 0.87rem; color: var(--muted); line-height: 1.5; }
+    /* Farewell messages */
+    .msgs-list { display: flex; flex-direction: column; gap: 14px; }
+    .msg-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 14px 14px 0;
+      padding: 18px 22px;
+    }
+    .msg-from { font-size: 0.78rem; color: var(--blue2); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px; }
+    .msg-text { font-size: 0.95rem; color: var(--muted); line-height: 1.65; }
+    /* Destination cards */
+    .dest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .dest-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 18px;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .dest-card:hover { transform: translateY(-5px); border-color: var(--blue); }
+    .dest-flag { font-size: 2.4rem; margin-bottom: 10px; }
+    .dest-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--sky);
+      margin-bottom: 6px;
+    }
+    .dest-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+    .dest-tip {
+      margin-top: 10px;
+      font-size: 0.8rem;
+      background: rgba(59,130,246,0.12);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      color: var(--blue2);
+    }
+    /* Promise section */
+    .promise-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 34px 28px;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-style: italic;
+    }
+    .promise-card strong { color: var(--text); font-style: normal; }
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--blue2); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Stars background -->
+  <div class="stars-container" id="starsContainer"></div>
+
+  <!-- Flying plane -->
+  <div class="plane-track">
+    <div class="trail"></div>
+    <div class="plane">✈️</div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-plane-big">✈️</div>
+    <div class="badge">🇨🇦 Off to Canada! 🇨🇦</div>
+    <h1>Bon Voyage, Arjun!</h1>
+    <p>A new country, a new chapter — but some friendships stretch across any distance.
+       Fly high, bhai. We've got your back from here. 💙</p>
+  </section>
+
+  <!-- Route Card -->
+  <div class="route-section">
+    <div class="route-card">
+      <div class="route-city">
+        <div class="city-code">BOM</div>
+        <div class="city-name">Mumbai, India 🇮🇳</div>
+      </div>
+      <div class="route-divider">— —</div>
+      <div class="route-plane">✈️</div>
+      <div class="route-divider">— —</div>
+      <div class="route-city">
+        <div class="city-code">YYZ</div>
+        <div class="city-name">Toronto, Canada 🇨🇦</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Memories Before Departure -->
+  <div class="section">
+    <h2 class="section-title">📸 Memories Before You Left</h2>
+    <div class="memories-grid">
+      <div class="memory-card">
+        <div class="mem-emoji">🍺</div>
+        <h3>Farewell Night at Leo's</h3>
+        <p>We said "one drink" and closed the bar. Your tearful speech at 2 AM is going in the group's hall of fame. 😂</p>
+      </div>
+      <div class="memory-card">
+        <div class="mem-emoji">🎮</div>
+        <h3>Last Gaming Session</h3>
+        <p>We played BGMI till 4 AM on your last night. You carried the team one final time. Iconic.</p>
+      </div>
+      <div class="memory-card">
+        <div class="mem-emoji">🍛</div>
+        <h3>Mom's Last Home-Cooked Meal</h3>
+        <p>Dal, sabzi, roti — the full spread. You ate three helpings. Canada better have good food. 😅</p>
+      </div>
+      <div class="memory-card">
+        <div class="mem-emoji">🌇</div>
+        <h3>Sunset at Worli Sea Face</h3>
+        <p>Just us, the ocean, and too many "bhai we're gonna miss you" moments. Perfect last evening in Mumbai.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Farewell Messages -->
+  <div class="section">
+    <h2 class="section-title">💌 Messages from the Gang</h2>
+    <div class="msgs-list">
+      <div class="msg-card">
+        <div class="msg-from">Rohan (Bhai for life) 💙</div>
+        <div class="msg-text">
+          "Bhai, no one deserves this more than you. You worked so hard for this moment.
+          Go build your empire in Canada — and then come back and buy us all biryani. Deal? 😄 We love you, legend."
+        </div>
+      </div>
+      <div class="msg-card">
+        <div class="msg-from">Priya (Your Second Sister 😁) 💜</div>
+        <div class="msg-text">
+          "Arjun, I know you'll be homesick in two weeks. Call us. FaceTime us. We'll be here.
+          But also — you're going to absolutely crush it. I know it in my bones. Canada ko sambhaal lena. 🇨🇦"
+        </div>
+      </div>
+      <div class="msg-card">
+        <div class="msg-from">Karan (The Photographer) 📸</div>
+        <div class="msg-text">
+          "I have 1,000 photos of you from last night. You cried in at least 400 of them. I'm keeping them all.
+          Kidding. (Not kidding.) Fly safe bhai, and conquer Toronto. 📸✈️"
+        </div>
+      </div>
+      <div class="msg-card">
+        <div class="msg-from">Mom &amp; Dad ❤️</div>
+        <div class="msg-text">
+          "Beta, we are so proud of you. The distance scares us, but your courage inspires us even more.
+          Eat well, call us every day, and remember — home is wherever your heart is. Our heart is always with you. 🙏"
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Destination Cards -->
+  <div class="section">
+    <h2 class="section-title">🌍 Your New World Awaits</h2>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <div class="dest-flag">🏙️</div>
+        <h3>Toronto</h3>
+        <p>The city that never sleeps — but also has very cold winters. Buy a good jacket first. 🧥</p>
+        <div class="dest-tip">📍 Must visit: CN Tower, Kensington Market</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🍁</div>
+        <h3>Niagara Falls</h3>
+        <p>Just a short drive from Toronto. Mist in your face, roar in your ears. Go on day one.</p>
+        <div class="dest-tip">📍 Best time: Golden hour 🌅</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🏔️</div>
+        <h3>Banff, Alberta</h3>
+        <p>Mountains, lakes, and skies so blue they look fake. This one will blow your mind. Trust us.</p>
+        <div class="dest-tip">📍 Book early — very popular!</div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-flag">🇨🇦</div>
+        <h3>Little India, Toronto</h3>
+        <p>When you're missing home, head to Gerrard Street East. Chai, samosas, and desi vibes.</p>
+        <div class="dest-tip">📍 Also: Surrey, BC has amazing pubs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Promise section -->
+  <div class="section">
+    <div class="promise-card">
+      "Distance means nothing when someone means <strong>everything</strong>.<br><br>
+      The timezone will change. The accent might too — we'll tease you endlessly for that. 😄<br>
+      But the bond we have? That doesn't need WiFi. That's permanent.<br><br>
+      Fly free, Arjun. We'll be here when you come back — and we'll be cheering you on from here every single day. ✈️💙"
+    </div>
+  </div>
+
+  <footer>
+    Bon Voyage, Arjun — Mumbai misses you already! ✈️🇨🇦 &nbsp;|&nbsp; Created with <a href="https://surprisebox.in" target="_blank" rel="noopener">SurpriseBox.in</a>
+  </footer>
+
+  <script>
+    // Stars
+    const starsContainer = document.getElementById('starsContainer');
+    for (let i = 0; i < 100; i++) {
+      const s = document.createElement('div');
+      s.classList.add('star');
+      const size = 1 + Math.random() * 2;
+      s.style.width  = size + 'px';
+      s.style.height = size + 'px';
+      s.style.left   = Math.random() * 100 + '%';
+      s.style.top    = Math.random() * 100 + '%';
+      s.style.animationDuration = (2 + Math.random() * 5) + 's';
+      s.style.animationDelay    = (Math.random() * 6) + 's';
+      starsContainer.appendChild(s);
+    }
+  </script>
+</body>
+</html>

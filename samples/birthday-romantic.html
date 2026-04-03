@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Priya 💌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #150a10;
+      --card: #220f18;
+      --rose: #f43f5e;
+      --pink: #fb7185;
+      --blush: #fda4af;
+      --text: #fff1f2;
+      --muted: #d4a0a8;
+      --border: rgba(244, 63, 94, 0.22);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    /* Floating petals */
+    .petals-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      top: -40px;
+      animation: petalFall linear infinite;
+    }
+    @keyframes petalFall {
+      0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.8; }
+      40%  { transform: translateY(40vh) rotate(120deg) translateX(15px); }
+      100% { transform: translateY(110vh) rotate(300deg) translateX(-10px); opacity: 0; }
+    }
+    /* Hero */
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 110px 24px 70px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(244,63,94,0.16) 0%, transparent 70%);
+    }
+    .hero-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+      animation: heartbeat 1.4s ease-in-out infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15%       { transform: scale(1.2); }
+      30%       { transform: scale(1); }
+      45%       { transform: scale(1.12); }
+      60%       { transform: scale(1); }
+    }
+    .hero .badge {
+      display: inline-block;
+      background: rgba(244,63,94,0.12);
+      border: 1px solid var(--border);
+      color: var(--rose);
+      padding: 6px 20px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1.2;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, var(--rose), var(--blush));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p { color: var(--muted); font-size: 1.1rem; max-width: 520px; margin: 0 auto; }
+    /* Section */
+    .section {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto 64px;
+      padding: 0 24px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--rose);
+      text-align: center;
+      margin-bottom: 34px;
+    }
+    /* Memory grid */
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .memory-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 18px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .memory-card:hover { transform: translateY(-5px); border-color: var(--rose); }
+    .memory-emoji { font-size: 2rem; margin-bottom: 10px; }
+    .memory-card h3 { font-size: 0.95rem; font-weight: 500; color: var(--blush); margin-bottom: 6px; }
+    .memory-card p  { font-size: 0.87rem; color: var(--muted); line-height: 1.5; }
+    /* Messages */
+    .messages-list { display: flex; flex-direction: column; gap: 16px; }
+    .msg-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px 24px;
+      position: relative;
+    }
+    .msg-card::before {
+      content: '"';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: rgba(244,63,94,0.12);
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      line-height: 1;
+    }
+    .msg-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.75;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+    /* Song section */
+    .song-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px 28px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .song-icon {
+      font-size: 3.5rem;
+      animation: spin 4s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .song-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--blush);
+      margin-bottom: 4px;
+    }
+    .song-info p { font-size: 0.92rem; color: var(--muted); line-height: 1.6; }
+    .song-info .song-meta {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: var(--rose);
+      letter-spacing: 0.05em;
+    }
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--rose); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Petals -->
+  <div class="petals-container" id="petalsContainer"></div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-icon">💌</div>
+    <div class="badge">💕 With All My Love 💕</div>
+    <h1>Happy Birthday, Priya</h1>
+    <p>Every day with you is a gift — but today, I get to celebrate the greatest gift of all: you. 🌹</p>
+  </section>
+
+  <!-- Memory Grid -->
+  <div class="section">
+    <h2 class="section-title">📸 Our Beautiful Memories</h2>
+    <div class="memory-grid">
+      <div class="memory-card">
+        <div class="memory-emoji">🌇</div>
+        <h3>First Sunset Together</h3>
+        <p>Marine Drive, October. You wore that yellow kurta and I couldn't stop looking at you.</p>
+      </div>
+      <div class="memory-card">
+        <div class="memory-emoji">🍰</div>
+        <h3>Midnight Cake Runs</h3>
+        <p>Remember that bakery we found at 1 AM? You said "just one slice" and we ate the whole cake. 😄</p>
+      </div>
+      <div class="memory-card">
+        <div class="memory-emoji">🌧️</div>
+        <h3>Dancing in the Rain</h3>
+        <p>Monsoon 2024. You pulled me outside and we danced on the empty road like fools. Best fools ever.</p>
+      </div>
+      <div class="memory-card">
+        <div class="memory-emoji">📚</div>
+        <h3>Study Dates That Weren't</h3>
+        <p>We brought textbooks, talked for 4 hours, and somehow both passed our exams. Magic.</p>
+      </div>
+      <div class="memory-card">
+        <div class="memory-emoji">🌄</div>
+        <h3>Coorg Trip</h3>
+        <p>Misty mornings, coffee plantations, and you stealing all the blankets. I still forgive you. ☕</p>
+      </div>
+      <div class="memory-card">
+        <div class="memory-emoji">🎬</div>
+        <h3>Movie Night Classics</h3>
+        <p>You said you'd watch an action movie. We watched 3 romcoms. I'd do it again every time.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Heartfelt Messages -->
+  <div class="section">
+    <h2 class="section-title">💌 From My Heart to Yours</h2>
+    <div class="messages-list">
+      <div class="msg-card">
+        <div class="msg-text">
+          You have this incredible way of making everything feel okay. When I'm anxious, one look at you
+          and somehow the world slows down. I don't know how you do it — but please never stop.
+        </div>
+      </div>
+      <div class="msg-card">
+        <div class="msg-text">
+          I love the way you laugh at your own jokes before you even finish telling them.
+          I love that you cry at every movie, even the ones you've seen before. I love every single detail of you.
+        </div>
+      </div>
+      <div class="msg-card">
+        <div class="msg-text">
+          On your birthday, I just want you to know: choosing you was the best decision I've ever made.
+          And I'd choose you again. In every lifetime, in every version of the story. Always you, Priya. 🌹
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Special Song -->
+  <div class="section">
+    <h2 class="section-title">🎵 Our Song</h2>
+    <div class="song-card">
+      <div class="song-icon">🎵</div>
+      <div class="song-info">
+        <h3>Tum Hi Ho — Aashiqui 2</h3>
+        <p>
+          Hum hain is pal yahaan, jaane ho kal kahaan... This song plays in my head every time I think of you.
+          It was playing during our drive to Coorg. Now it's ours forever.
+        </p>
+        <div class="song-meta">🎶 Play this on Spotify / YouTube and think of me 💕</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Made with 💌 love, just for Priya &nbsp;|&nbsp; Created with <a href="https://surprisebox.in" target="_blank" rel="noopener">SurpriseBox.in</a>
+  </footer>
+
+  <script>
+    // Floating rose petals
+    const petalContainer = document.getElementById('petalsContainer');
+    const petalSymbols = ['🌸', '🌹', '💕', '❤️', '🌺', '💖'];
+    for (let i = 0; i < 22; i++) {
+      const p = document.createElement('div');
+      p.classList.add('petal');
+      p.textContent = petalSymbols[Math.floor(Math.random() * petalSymbols.length)];
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (8 + Math.random() * 9) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      p.style.fontSize = (0.9 + Math.random() * 1.0) + 'rem';
+      p.style.opacity = (0.4 + Math.random() * 0.4).toString();
+      petalContainer.appendChild(p);
+    }
+  </script>
+</body>
+</html>
