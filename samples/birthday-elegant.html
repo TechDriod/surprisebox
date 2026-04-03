@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Mom 🌸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #120820;
+      --card: #1e1030;
+      --accent: #d946ef;
+      --accent2: #a855f7;
+      --pink: #f9a8d4;
+      --text: #fdf4ff;
+      --muted: #c4b5d4;
+      --border: rgba(217, 70, 239, 0.2);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    /* Falling petals */
+    .petals-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      top: -40px;
+      font-size: 1.3rem;
+      animation: fallDown linear infinite;
+      opacity: 0.7;
+    }
+    @keyframes fallDown {
+      0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.7; }
+      50%  { transform: translateY(50vh) rotate(180deg) translateX(20px); }
+      100% { transform: translateY(110vh) rotate(360deg) translateX(-10px); opacity: 0; }
+    }
+    /* Hero */
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 110px 24px 70px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(217,70,239,0.15) 0%, transparent 70%);
+    }
+    .hero-flower { font-size: 4.5rem; margin-bottom: 16px; animation: sway 3s ease-in-out infinite; }
+    @keyframes sway {
+      0%, 100% { transform: rotate(-6deg); }
+      50%       { transform: rotate(6deg); }
+    }
+    .hero .badge {
+      display: inline-block;
+      background: rgba(217,70,239,0.12);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 6px 20px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      line-height: 1.2;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--accent), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    /* Sections */
+    .section {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto 64px;
+      padding: 0 24px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.85rem;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    /* Tribute card */
+    .tribute-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-style: italic;
+    }
+    .tribute-card strong { color: var(--text); font-style: normal; }
+    /* Qualities */
+    .qualities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .quality-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 18px;
+      text-align: center;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .quality-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+    .quality-icon { font-size: 2.2rem; margin-bottom: 10px; }
+    .quality-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--pink);
+      margin-bottom: 6px;
+    }
+    .quality-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+    /* Memories */
+    .memories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+    .memory-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .memory-emoji { font-size: 1.8rem; margin-bottom: 10px; }
+    .memory-card h3 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--pink);
+      margin-bottom: 6px;
+    }
+    .memory-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+    /* Messages */
+    .messages-list { display: flex; flex-direction: column; gap: 16px; }
+    .message-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 14px 14px 0;
+      padding: 20px 22px;
+    }
+    .message-from {
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .message-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-style: italic;
+    }
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Falling Petals -->
+  <div class="petals-container" id="petalsContainer"></div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-flower">🌸</div>
+    <div class="badge">🌸 With All Our Love 🌸</div>
+    <h1>Happy Birthday, Mom</h1>
+    <p>To the woman who is our strength, our home, and our heart. Today we celebrate you. 💜</p>
+  </section>
+
+  <!-- Tribute -->
+  <div class="section">
+    <h2 class="section-title">🌷 A Tribute to You</h2>
+    <div class="tribute-card">
+      "There are no words that can fully capture what you mean to us, Mom.<br><br>
+      You have given us <strong>everything</strong> — your time, your love, your patience, and your beautiful heart.
+      Every lesson you've taught us, every hug you've given, every sacrifice you've made quietly —
+      we see it all, and we are so deeply grateful.<br><br>
+      On your special day, we just want you to know: <strong>you are our world.</strong>"
+    </div>
+  </div>
+
+  <!-- Qualities -->
+  <div class="section">
+    <h2 class="section-title">✨ What Makes You, You</h2>
+    <div class="qualities-grid">
+      <div class="quality-card">
+        <div class="quality-icon">💪</div>
+        <h3>Unbreakable Strength</h3>
+        <p>You faced every storm with grace and never let us see you fall.</p>
+      </div>
+      <div class="quality-card">
+        <div class="quality-icon">🍲</div>
+        <h3>Magic in the Kitchen</h3>
+        <p>No restaurant in the world comes close to your cooking — and we mean that.</p>
+      </div>
+      <div class="quality-card">
+        <div class="quality-icon">❤️</div>
+        <h3>Unconditional Love</h3>
+        <p>You love us on our worst days, and that means more than you know.</p>
+      </div>
+      <div class="quality-card">
+        <div class="quality-icon">🦋</div>
+        <h3>Endless Patience</h3>
+        <p>Somehow you never gave up on us — even when we were a handful.</p>
+      </div>
+      <div class="quality-card">
+        <div class="quality-icon">🌟</div>
+        <h3>Our Role Model</h3>
+        <p>Everything good in us? We learned it by watching you.</p>
+      </div>
+      <div class="quality-card">
+        <div class="quality-icon">🌙</div>
+        <h3>Safe Harbor</h3>
+        <p>No matter where life takes us, home always means you.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Family Memories -->
+  <div class="section">
+    <h2 class="section-title">📸 Memories We Cherish</h2>
+    <div class="memories-grid">
+      <div class="memory-card">
+        <div class="memory-emoji">🏖️</div>
+        <h3>Our First Family Vacation</h3>
+        <p>You had everything planned for everyone else and forgot to pack something for yourself. That's so you.</p>
+      </div>
+      <div class="memory-card">
+        <div class="memory-emoji">🎓</div>
+        <h3>Graduation Day</h3>
+        <p>You cried before we even crossed the stage. We'll never let you forget that. 😄</p>
+      </div>
+      <div class="memory-card">
+        <div class="memory-emoji">🌙</div>
+        <h3>Late Night Stories</h3>
+        <p>Those bedtime stories that were supposed to be 5 minutes and lasted an hour — our favourite memories.</p>
+      </div>
+      <div class="memory-card">
+        <div class="memory-emoji">🎂</div>
+        <h3>Birthday Feasts</h3>
+        <p>You always made our birthdays feel like royalty. Today is your turn, Queen. 👑</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Messages from Children -->
+  <div class="section">
+    <h2 class="section-title">💌 Messages from Your Children</h2>
+    <div class="messages-list">
+      <div class="message-card">
+        <div class="message-from">From Rohan (Your Son) 💙</div>
+        <div class="message-text">
+          "Mom, you've always believed in me even when I didn't believe in myself. Thank you for every single thing.
+          I love you more than words. Happy Birthday! 🌸"
+        </div>
+      </div>
+      <div class="message-card">
+        <div class="message-from">From Riya (Your Daughter) 💜</div>
+        <div class="message-text">
+          "Every time I feel lost, I think of how you'd handle it — with grace and a smile.
+          You're my hero, Mom. This day is all about you. Enjoy every moment! 🌷"
+        </div>
+      </div>
+      <div class="message-card">
+        <div class="message-from">From Dad ❤️</div>
+        <div class="message-text">
+          "Watching you be an incredible mother has been the greatest joy of my life. You are beautiful,
+          inside and out. Happy Birthday, my love. 🌹"
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Made with 🌸 love for the World's Best Mom &nbsp;|&nbsp; Created with <a href="https://surprisebox.in" target="_blank" rel="noopener">SurpriseBox.in</a>
+  </footer>
+
+  <script>
+    // Falling petals animation
+    const petalContainer = document.getElementById('petalsContainer');
+    const petals = ['🌸', '🌺', '💮', '🌷', '✨', '🌼'];
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.classList.add('petal');
+      p.textContent = petals[Math.floor(Math.random() * petals.length)];
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (7 + Math.random() * 8) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      p.style.fontSize = (0.9 + Math.random() * 0.9) + 'rem';
+      petalContainer.appendChild(p);
+    }
+  </script>
+</body>
+</html>
