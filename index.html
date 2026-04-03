@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SurpriseBox — Personalized surprise websites for birthdays, anniversaries & special wishes. Delivered in 24 hours." />
+  <meta property="og:title" content="SurpriseBox — Magical Surprise Websites" />
+  <meta property="og:description" content="Birthdays, anniversaries & wishes — beautifully personalized websites delivered in 24 hours." />
+  <title>SurpriseBox — Magical Surprise Websites</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ========== NAV ========== -->
+  <nav id="navbar">
+    <a class="logo" href="#">Surprise<span>Box</span>.in</a>
+    <div class="nav-links">
+      <a href="#occasions">Occasions</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#order" class="btn-nav">Order Now</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#occasions" onclick="closeMobileMenu()">Occasions</a>
+    <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
+    <a href="#order" onclick="closeMobileMenu()">Order Now</a>
+  </div>
+
+  <!-- ========== PARTICLES ========== -->
+  <div class="floating-particles" id="particles"></div>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-tag">✨ Birthdays · Anniversaries · Special Wishes</div>
+    <h1>
+      Every occasion
+      <span class="line2">deserves a <span class="highlight">magical</span> surprise</span>
+    </h1>
+    <p class="hero-sub">
+      Personalized surprise websites for birthdays, anniversaries & special moments —
+      delivered in 24 hours.
+    </p>
+    <div class="hero-btns">
+      <a href="#order" class="btn-primary">Create a Surprise 🎁</a>
+      <a href="#occasions" class="btn-ghost">See Examples</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Surprises created</div></div>
+      <div class="stat"><div class="stat-num">24hr</div><div class="stat-label">Fast delivery</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Personalized</div></div>
+    </div>
+  </section>
+
+  <!-- ========== OCCASIONS ========== -->
+  <section class="occasions" id="occasions">
+    <div class="center">
+      <div class="sec-label">What We Create</div>
+      <h2 class="sec-title">Every occasion, beautifully made</h2>
+      <p class="sec-sub">Teen categories, sab ke liye — romantic, emotional, ya fun — sab kuch possible hai.</p>
+
+      <div class="tabs">
+        <button class="tab-btn active birthday" onclick="switchTab('birthday', this)">🎂 Birthday</button>
+        <button class="tab-btn anniversary" onclick="switchTab('anniversary', this)">💍 Anniversary</button>
+        <button class="tab-btn wishes" onclick="switchTab('wishes', this)">🌟 Wishes</button>
+      </div>
+
+      <!-- Birthday -->
+      <div class="occasion-panel active" id="tab-birthday">
+        <div class="cards-grid">
+          <div class="occ-card">
+            <div class="occ-visual romantic">
+              <span>💌</span>
+              <div class="occ-name">Happy Birthday, Priya</div>
+              <div class="occ-from">From Rahul ♥</div>
+              <div class="occ-label">Romantic</div>
+            </div>
+            <div class="occ-body">
+              <div class="occ-body-name">Romantic Style</div>
+              <div class="occ-body-desc">Couple ke liye — photos, love messages, special song</div>
+            </div>
+          </div>
+          <div class="occ-card">
+            <div class="occ-visual fun">
+              <span>🎉</span>
+              <div class="occ-name">Tu 21 ka ho gaya bro!</div>
+              <div class="occ-from">From the gang 😂</div>
+              <div class="occ-label">Fun & Funny</div>
+            </div>
+            <div class="occ-body">
+              <div class="occ-body-name">Fun Style</div>
+              <div class="occ-body-desc">Dosto ke liye — funny photos, roast messages, quiz</div>
+            </div>
+          </div>
+          <div class="occ-card">
+            <div class="occ-visual elegant">
+              <span>🌸</span>
+              <div class="occ-name">Happy Birthday, Mom</div>
+              <div class="occ-from">With all our love</div>
+              <div class="occ-label">Elegant</div>
+            </div>
+            <div class="occ-body">
+              <div class="occ-body-name">Elegant Style</div>
+              <div class="occ-body-desc">Family ke liye — warm photos, heartfelt messages</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Anniversary -->
+      <div class="occasion-panel" id="tab-anniversary">
+        <div class="cards-grid">
+          <div class="occ-card">
+            <div class="occ-visual ann1">
+              <span>💍</span>
+              <div class="occ-name">1 Saal Ho Gaya ♥</div>
+              <div class="occ-from">Priya & Rahul</div>
+              <div class="occ-label">1st Anniversary</div>
+            </div>
+            <div class="occ-body">
+              <div class="occ-body-name">Love Story Timeline</div>
+              <div class="occ-body-desc">Pehli mulaqaat se aaj tak ki journey — photos & memories</div>
+            </div>
+          </div>
+          <div class="occ-card">
+            <div class="occ-visual ann2">
+              <span>🌹</span>
+              <div class="occ-name">25 Saal Saath</div>
+              <div class="occ-from">Silver Jubilee</div>
+              <div class="occ-label">Silver Anniversary</div>
+            </div>
+            <div class="occ-body">
+              <div class="occ-body-name">Silver Jubilee Style</div>
+              <div class="occ-body-desc">Parents ke liye — family photos, children ke messages</div>
+            </div>
+          </div>
+          <div class="occ-card">
+            <div class="occ-visual ann3">
+              <span>✨</span>
+              <div class="occ-name">Forever & Always</div>
+              <div class="occ-from">Surprise for her</div>
+              <div class="occ-label">Romantic</div>
+            </div>
+            <div class="occ-body">
+              <div class="occ-body-name">Surprise Anniversary</div>
+              <div class="occ-body-desc">Ek surprise jo wo kabhi nahi bhoolegi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wishes -->
+      <div class="occasion-panel" id="tab-wishes">
+        <div class="cards-grid">
+          <div class="occ-card">
+            <div class="occ-visual wish1">
+              <span>🎓</span>
+              <div class="occ-name">Congratulations!</div>
+              <div class="occ-from">You did it! 🎉</div>
+              <div class="occ-label">Congratulations</div>
+            </div>
+            <div class="occ-body">
+              <div class="occ-body-name">Congrats / Promotion</div>
+              <div class="occ-body-desc">Exam pass, promotion, new job — celebrate their win!</div>
+            </div>
+          </div>
+          <div class="occ-card">
+            <div class="occ-visual wish2">
+              <span>✈️</span>
+              <div class="occ-name">Bon Voyage, Yaar!</div>
+              <div class="occ-from">Miss karenge tujhe 😢</div>
+              <div class="occ-label">Farewell</div>
+            </div>
+            <div class="occ-body">
+              <div class="occ-body-name">Farewell / Bon Voyage</div>
+              <div class="occ-body-desc">Dost ja raha hai — yaadein website mein forever save karo</div>
+            </div>
+          </div>
+          <div class="occ-card">
+            <div class="occ-visual wish3">
+              <span>💙</span>
+              <div class="occ-name">Get Well Soon</div>
+              <div class="occ-from">Sab pray kar rahe hain</div>
+              <div class="occ-label">Get Well Soon</div>
+            </div>
+            <div class="occ-body">
+              <div class="occ-body-name">Get Well Soon</div>
+              <div class="occ-body-desc">Pyaar aur dua bhejo — photos, messages, cheering wishes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRICING ========== -->
+  <section class="pricing" id="pricing">
+    <div class="center">
+      <div class="sec-label">Pricing</div>
+      <h2 class="sec-title">Simple pricing, koi hidden charge nahi</h2>
+      <p class="sec-sub">Occasion ke hisaab se plan chuniye — ek baar ka payment, koi subscription nahi.</p>
+
+      <div class="pricing-tabs">
+        <button class="ptab active" onclick="switchPricing('bday', this)">🎂 Birthday</button>
+        <button class="ptab ann" onclick="switchPricing('ann', this)">💍 Anniversary</button>
+        <button class="ptab wsh" onclick="switchPricing('wsh', this)">🌟 Wishes</button>
+      </div>
+
+      <!-- Birthday Pricing -->
+      <div class="pricing-panel active" id="pp-bday">
+        <div class="p-card">
+          <div class="p-name">Basic</div>
+          <div class="p-price">₹99 <small>/ website</small></div>
+          <div class="p-desc">Quick aur sweet surprise</div>
+          <ul class="p-features">
+            <li><span class="ck b">♥</span> 5 photos</li>
+            <li><span class="ck b">♥</span> 3 friends ke messages</li>
+            <li><span class="ck b">♥</span> 1 background song</li>
+            <li><span class="ck b">♥</span> 3 din live</li>
+            <li><span class="ck b">♥</span> 24hr delivery</li>
+          </ul>
+          <a href="#order" class="p-btn outline" onclick="autoSelectPlan('Basic','b')">Order Basic</a>
+        </div>
+        <div class="p-card hot">
+          <div class="hot-badge b">Most Popular 🔥</div>
+          <div class="p-name">Premium</div>
+          <div class="p-price">₹199 <small>/ website</small></div>
+          <div class="p-desc">Ek yaadgaar birthday</div>
+          <ul class="p-features">
+            <li><span class="ck b">♥</span> Unlimited photos + video</li>
+            <li><span class="ck b">♥</span> Unlimited messages</li>
+            <li><span class="ck b">♥</span> Custom song + playlist</li>
+            <li><span class="ck b">♥</span> Fun birthday quiz</li>
+            <li><span class="ck b">♥</span> Countdown timer</li>
+            <li><span class="ck b">♥</span> 7 din live</li>
+          </ul>
+          <a href="#order" class="p-btn fill-b" onclick="autoSelectPlan('Premium','b')">Order Premium</a>
+        </div>
+        <div class="p-card">
+          <div class="p-name">Luxury</div>
+          <div class="p-price">₹349 <small>/ website</small></div>
+          <div class="p-desc">Next level surprise</div>
+          <ul class="p-features">
+            <li><span class="ck b">♥</span> Sab Premium features</li>
+            <li><span class="ck b">♥</span> Custom animation intro</li>
+            <li><span class="ck b">♥</span> Video messages</li>
+            <li><span class="ck b">♥</span> 30 din live</li>
+            <li><span class="ck b">♥</span> 12hr priority delivery</li>
+            <li><span class="ck b">♥</span> 1 free revision</li>
+          </ul>
+          <a href="#order" class="p-btn outline" onclick="autoSelectPlan('Luxury','b')">Order Luxury</a>
+        </div>
+      </div>
+
+      <!-- Anniversary Pricing -->
+      <div class="pricing-panel" id="pp-ann">
+        <div class="p-card">
+          <div class="p-name">Basic</div>
+          <div class="p-price">₹149 <small>/ website</small></div>
+          <div class="p-desc">Sweet anniversary surprise</div>
+          <ul class="p-features">
+            <li><span class="ck a">♥</span> 5 couple photos</li>
+            <li><span class="ck a">♥</span> Love letter message</li>
+            <li><span class="ck a">♥</span> Special song</li>
+            <li><span class="ck a">♥</span> 3 din live</li>
+            <li><span class="ck a">♥</span> 24hr delivery</li>
+          </ul>
+          <a href="#order" class="p-btn outline" onclick="autoSelectPlan('Basic','a')">Order Basic</a>
+        </div>
+        <div class="p-card hot-ann">
+          <div class="hot-badge a">Most Popular 💍</div>
+          <div class="p-name">Premium</div>
+          <div class="p-price">₹249 <small>/ website</small></div>
+          <div class="p-desc">Love story perfectly told</div>
+          <ul class="p-features">
+            <li><span class="ck a">♥</span> Unlimited photos + video</li>
+            <li><span class="ck a">♥</span> Love story timeline</li>
+            <li><span class="ck a">♥</span> Favourite song + memories</li>
+            <li><span class="ck a">♥</span> "Reasons I love you" section</li>
+            <li><span class="ck a">♥</span> Countdown to next anniversary</li>
+            <li><span class="ck a">♥</span> 7 din live</li>
+          </ul>
+          <a href="#order" class="p-btn fill-a" onclick="autoSelectPlan('Premium','a')">Order Premium</a>
+        </div>
+        <div class="p-card">
+          <div class="p-name">Luxury</div>
+          <div class="p-price">₹399 <small>/ website</small></div>
+          <div class="p-desc">Unforgettable anniversary</div>
+          <ul class="p-features">
+            <li><span class="ck a">♥</span> Sab Premium features</li>
+            <li><span class="ck a">♥</span> Cinematic photo slideshow</li>
+            <li><span class="ck a">♥</span> Video messages</li>
+            <li><span class="ck a">♥</span> 30 din live</li>
+            <li><span class="ck a">♥</span> 12hr priority delivery</li>
+            <li><span class="ck a">♥</span> 1 free revision</li>
+          </ul>
+          <a href="#order" class="p-btn outline" onclick="autoSelectPlan('Luxury','a')">Order Luxury</a>
+        </div>
+      </div>
+
+      <!-- Wishes Pricing -->
+      <div class="pricing-panel" id="pp-wsh">
+        <div class="p-card">
+          <div class="p-name">Basic</div>
+          <div class="p-price">₹99 <small>/ website</small></div>
+          <div class="p-desc">Simple aur meaningful</div>
+          <ul class="p-features">
+            <li><span class="ck w">★</span> 5 photos</li>
+            <li><span class="ck w">★</span> 3 messages</li>
+            <li><span class="ck w">★</span> Background music</li>
+            <li><span class="ck w">★</span> 3 din live</li>
+            <li><span class="ck w">★</span> 24hr delivery</li>
+          </ul>
+          <a href="#order" class="p-btn outline" onclick="autoSelectPlan('Basic','w')">Order Basic</a>
+        </div>
+        <div class="p-card hot-wsh">
+          <div class="hot-badge w">Best Value ⭐</div>
+          <div class="p-name">Premium</div>
+          <div class="p-price">₹199 <small>/ website</small></div>
+          <div class="p-desc">Dil se ek special wish</div>
+          <ul class="p-features">
+            <li><span class="ck w">★</span> Unlimited photos</li>
+            <li><span class="ck w">★</span> Group messages from everyone</li>
+            <li><span class="ck w">★</span> Custom song</li>
+            <li><span class="ck w">★</span> Occasion-specific design</li>
+            <li><span class="ck w">★</span> Shareable link</li>
+            <li><span class="ck w">★</span> 7 din live</li>
+          </ul>
+          <a href="#order" class="p-btn fill-w" onclick="autoSelectPlan('Premium','w')">Order Premium</a>
+        </div>
+        <div class="p-card">
+          <div class="p-name">Luxury</div>
+          <div class="p-price">₹349 <small>/ website</small></div>
+          <div class="p-desc">Maximum impact wish</div>
+          <ul class="p-features">
+            <li><span class="ck w">★</span> Sab Premium features</li>
+            <li><span class="ck w">★</span> Custom animation</li>
+            <li><span class="ck w">★</span> Video messages</li>
+            <li><span class="ck w">★</span> 30 din live</li>
+            <li><span class="ck w">★</span> Priority 12hr delivery</li>
+            <li><span class="ck w">★</span> 1 free revision</li>
+          </ul>
+          <a href="#order" class="p-btn outline" onclick="autoSelectPlan('Luxury','w')">Order Luxury</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ORDER ========== -->
+  <section class="order-sec" id="order">
+    <div class="center">
+      <div class="sec-label">Place Your Order</div>
+      <h2 class="sec-title">Ready to create the magic?</h2>
+
+      <div class="order-grid">
+        <!-- Left Info -->
+        <div class="order-left">
+          <h3>Kaise kaam karta hai?</h3>
+          <p>Form bhar do, payment karo — aur 24 ghante mein tumhari personalized website ready hogi, seedha WhatsApp pe!</p>
+          <ul class="steps-list">
+            <li>
+              <div class="s-circle">1</div>
+              <div class="s-text"><strong>Occasion chuniye</strong><span>Birthday, anniversary ya wishes</span></div>
+            </li>
+            <li>
+              <div class="s-circle">2</div>
+              <div class="s-text"><strong>Details bhar do</strong><span>Photos, messages, song — Google Drive pe upload karo</span></div>
+            </li>
+            <li>
+              <div class="s-circle">3</div>
+              <div class="s-text"><strong>Payment karo</strong><span>UPI/PhonePe se secure payment — ₹99 se shuru</span></div>
+            </li>
+            <li>
+              <div class="s-circle">4</div>
+              <div class="s-text"><strong>Website milegi 24hr mein</strong><span>WhatsApp pe link aayega — share karo aur reaction dekhte raho 😍</span></div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Order Form -->
+        <div id="formWrap">
+          <div class="form-box">
+            <h3>Order karo 🎁</h3>
+
+            <!-- Occasion Selector -->
+            <div class="form-group">
+              <label>Occasion chuniye</label>
+              <div class="occ-selector">
+                <div class="occ-opt sel-b" onclick="pickOcc(this,'b')" data-occ="Birthday">
+                  <div class="occ-opt-icon">🎂</div>
+                  <div class="occ-opt-name">Birthday</div>
+                </div>
+                <div class="occ-opt" onclick="pickOcc(this,'a')" data-occ="Anniversary">
+                  <div class="occ-opt-icon">💍</div>
+                  <div class="occ-opt-name">Anniversary</div>
+                </div>
+                <div class="occ-opt" onclick="pickOcc(this,'w')" data-occ="Wishes">
+                  <div class="occ-opt-icon">🌟</div>
+                  <div class="occ-opt-name">Wishes</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sub Occasion (Wishes) -->
+            <div class="form-group sub-occ" id="subOccWrap">
+              <label>Kaunsa wish?</label>
+              <div class="sub-chips">
+                <button class="sub-chip active" onclick="pickSub(this)">Farewell</button>
+                <button class="sub-chip" onclick="pickSub(this)">Congratulations</button>
+                <button class="sub-chip" onclick="pickSub(this)">Promotion</button>
+                <button class="sub-chip" onclick="pickSub(this)">Get Well Soon</button>
+                <button class="sub-chip" onclick="pickSub(this)">Thank You</button>
+              </div>
+            </div>
+
+            <!-- Plan Selector -->
+            <div class="form-group">
+              <label>Plan chuniye</label>
+              <div class="plan-mini" id="planMini">
+                <div class="pm-opt" onclick="pickPlan(this,'Basic')" data-plan="Basic">
+                  <div class="pm-price" id="p1">₹99</div>
+                  <div class="pm-name">Basic</div>
+                </div>
+                <div class="pm-opt sel" onclick="pickPlan(this,'Premium')" data-plan="Premium">
+                  <div class="pm-price" id="p2">₹199</div>
+                  <div class="pm-name">Premium ⭐</div>
+                </div>
+                <div class="pm-opt" onclick="pickPlan(this,'Luxury')" data-plan="Luxury">
+                  <div class="pm-price" id="p3">₹349</div>
+                  <div class="pm-name">Luxury</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="frow">
+              <div class="form-group">
+                <label>Tumhara naam</label>
+                <input type="text" id="sName" placeholder="Rahul Sharma" />
+              </div>
+              <div class="form-group">
+                <label>WhatsApp number</label>
+                <input type="tel" id="sPhone" placeholder="9876543210" />
+              </div>
+            </div>
+            <div class="frow">
+              <div class="form-group">
+                <label>Unka naam</label>
+                <input type="text" id="rName" placeholder="Priya Gupta" />
+              </div>
+              <div class="form-group">
+                <label>Occasion date</label>
+                <input type="date" id="occDate" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Website style</label>
+              <select id="styleSelect">
+                <option value="">Style chuniye...</option>
+                <option>💌 Romantic</option>
+                <option>🎉 Fun & Funny</option>
+                <option>🌸 Elegant / Emotional</option>
+                <option>✨ Cinematic</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Photos — Google Drive link</label>
+              <input type="url" id="photos" placeholder="drive.google.com/..." />
+            </div>
+            <div class="form-group">
+              <label>Messages ya special memory</label>
+              <textarea id="msgs" placeholder="Dosto ke messages, koi yaad, koi cheez jo unhe pasand hai..."></textarea>
+            </div>
+            <div class="form-group">
+              <label>Favourite song (naam ya link)</label>
+              <input type="text" id="song" placeholder="Tum Hi Ho — Aashiqui 2" />
+            </div>
+
+            <button class="submit-btn" onclick="submitOrder()">Order Karo 🎉</button>
+            <div class="form-note">Payment WhatsApp pe confirm hogi · 24hr delivery guaranteed</div>
+          </div>
+        </div>
+
+        <!-- Success Message -->
+        <div class="success-box" id="successBox">
+          <div class="s-ico">🎉</div>
+          <h3>Order Receive Ho Gaya!</h3>
+          <p>
+            Hum 1 ghante mein tumhare WhatsApp pe message karenge aur payment details bhejenge.<br /><br />
+            24 ghante mein tumhari website ready hogi! ✨<br /><br />
+            Shukriya SurpriseBox choose karne ke liye 💕
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="f-logo">Surprise<span>Box</span>.in</div>
+    <div class="f-txt">Made with ♥ for every special moment</div>
+    <div class="f-txt">📞 WhatsApp: +91 98765 43210</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
